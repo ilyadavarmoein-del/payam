@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<title>Gold Shop</title>
+
+<style>
+
+body{
+margin:0;
+font-family:tahoma;
+background:#0f0f0f;
+color:white;
+text-align:center;
+}
+
+.hero{
+height:100vh;
+background:url("gold.jpg") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+animation:fade 2s;
+}
+
+.gallery{
+display:flex;
+gap:20px;
+justify-content:center;
+padding:50px;
+flex-wrap:wrap;
+}
+
+.gallery img{
+width:250px;
+border-radius:10px;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.1);
+box-shadow:0 0 30px gold;
+}
+
+.video{
+padding:60px;
+}
+
+video{
+width:60%;
+border-radius:15px;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+footer{
+padding:30px;
+background:black;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+طلا فروشی لوکس
+</div>
+
+<div class="gallery">
+<img src="1.jpg">
+<img src="2.jpg">
+<img src="3.jpg">
+<img src="4.jpg">
+</div>
+
+<div class="video">
+<video controls>
+<source src="gold.mp4">
+</video>
+</div>
+
+<footer>
+Instagram | Phone
+</footer>
+
+</body>
+</html>

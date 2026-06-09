@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افتخارات آکادمی</title>
+    <link href="../images/title1.jpg" rel="icon"/>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: Tahoma, Geneva, sans-serif; 
+            background-image: url('../images/back-honors.jpg');
+            background-size: cover;
+            background-position: center; 
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .container .honor-item:nth-of-type(2) .honor-image img {
+            width: 100%;
+            height: 110%;
+            object-fit: cover;
+            object-position: center -225px;
+        }
+
+
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .honor-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            flex-direction: row-reverse; 
+        }
+        
+        .honor-image {
+            flex: 0 0 250px; 
+            height: 200px;
+            background-color: #eee;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 20px; 
+        }
+
+        .honor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .honor-details {
+            flex: 1;
+            padding: 0 15px;
+            font-weight: bold;
+        }
+
+        .honor-details h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .honor-details p {
+            color: #050921;
+            font-size: 0.95rem;
+            
+        }
+
+        @media (max-width: 600px) {
+            .honor-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .honor-image {
+                margin-right: 0;
+                margin-bottom: 15px;
+                flex: 0 0 200px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="page-title">لیست افتخارات و دستاوردها</h1>
+
+        <div class="honor-item">
+            <div class="honor-image">
+                <img src="../images/girls.jpg" alt="مقام اول کشوری">
+            </div>
+            <div class="honor-details">
+                <h3>قهرمانی باشگاه پیام در لیگ سنگ‌نوردی کشور 🧗‍♀️</h3>
+                <p>در بخش بانوان، سارینا غفاری، نماینده‌ی شایسته‌ی باشگاه پیام، موفق شد در ماده‌ی سرطناب (Lead) مقام 🥇 اول و در ماده‌ی بلدرینگ (Bouldering) مقام 🥈 دوم کشور را به دست آورد.
+</p>
+            </div>
+        </div>
+
+        <div class="honor-item">
+            <div class="honor-image">
+                <img src="../images/boys.jpg" alt="عنوان افتخار">
+            </div>
+            <div class="honor-details">
+                <h3>🧗‍♀️درخشش تیم پیام در لیگ سنگ‌نوردی کشور</h3>
+                <p>تیم آقایان باشگاه پیام در رقابت‌های لیگ سنگ‌نوردی کشور با عملکردی محکم و پرانرژی، به مقام سومی تیمی 🥉 دست پیدا کرد</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

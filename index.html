@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>آکادمی سنگنوردی پیام</title>
+<link href="images/title1.jpg" rel="icon"/>
+<style>
+
+
+:root{
+ --glass-bg: rgba(255,255,255,0.08);
+ --glass-border: rgba(255,255,255,0.18);
+ --accent1: #ff4d4d;
+ --accent2: #00c3ff;
+ --accent3: #ff9d00;
+ --text: #ffffff;
+ --muted: #cfd3db;
+ --shadow: 0 10px 35px rgba(0,0,0,.40);
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+ font-family:IRANSans, sans-serif;
+ background:#060b15;
+ color:var(--text);
+ overflow-x:hidden;
+}
+
+
+
+header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 1200px);
+  height: 125px;
+  /* تغییر: رنگ سفید نیمه‌شفاف به جای سفید خالص */
+  background: rgba(255, 255, 255, 0.7); 
+  /* اضافه شده: ایجاد حالت شیشه‌ای با مات کردن پشت کادر */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+header img{
+ height:55px;
+}
+
+.menu-btn{
+ position:absolute;
+ right:-15px;
+ width:55px;
+ height:55px;
+ border-radius:18px;
+ border:none;
+ cursor:pointer;
+ background:linear-gradient(145deg,rgba(255,255,255,.15), rgba(255,255,255,.05));
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ transition:.2s;
+}
+
+.menu-btn:hover{ transform:scale(1.1); }
+
+.menu-dots span{
+ width:6px;
+ height:6px;
+ display:block;
+ background:black;
+ border-radius:50%;
+ margin:4px;
+}
+
+
+.menu-btn{
+ position:absolute;
+ right:-15px;
+ font-size:40px;
+ border:none;
+ background:none;
+ box-shadow:none;
+ outline:none;
+ cursor:pointer;
+ padding:5px;
+ color:black;
+ font-weight: bolder;
+}
+
+.menu-btn:hover{
+ transform:scale(1.1);
+}
+
+
+#sideMenu{
+ position:fixed;
+ right:-350px;
+ top:0;
+ width:350px;
+ height:100%;
+ background:rgba(10,15,25,.95);
+ backdrop-filter:blur(12px);
+ border-left:1px solid rgba(255,255,255,.10);
+ box-shadow:-20px 0 40px rgba(0,0,0,.45);
+ transition:.45s cubic-bezier(.25,.8,.25,1);
+ z-index:20000;
+ padding:30px;
+}
+
+#sideMenu.active{ right:0; }
+
+.side-link {
+  display:flex;
+  align-items:center;
+  justify-content:right; 
+  direction: rtl;            
+  width:100%;
+  height:60px;
+  padding:0 20px;      
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  margin-bottom:12px;
+  transition:.3s;
+  font-size:16px;
+  color:white;
+  cursor:pointer;
+}
+
+
+
+.side-link:hover{
+ background:linear-gradient(90deg,var(--accent1),var(--accent2));
+ transform:translateX(-10px);
+}
+
+
+
+
+.hero{
+ position:relative;
+ height:100vh;
+ width:100%;
+ overflow:hidden;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+
+.hero video{
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ opacity:0;
+ transition:opacity 1.2s ease;
+}
+
+.hero video.active{
+ opacity:1;
+}
+
+.hero::after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.4));
+ z-index:1;
+}
+
+.hero-content{
+ position:relative;
+ z-index:2;
+ text-align:center;
+ padding:20px;
+}
+
+
+.hero-text{
+ font-size:21px;
+
+ color:var(--muted);
+ width:min(90%,800px);
+ margin:auto;
+ margin-bottom:40px;
+ line-height:3;
+}
+
+
+
+
+
+[data-anim]{
+ opacity:0;
+ transform:translateY(50px);
+ transition:1s ease;
+}
+
+[data-anim].show{
+ opacity:1;
+ transform:translateY(0);
+}
+
+
+
+section{
+ padding:100px 0;
+ width:min(92%,1200px);
+ margin:auto;
+}
+
+.section-title{
+ font-size:38px;
+ margin-bottom:15px;
+}
+
+.section-text{
+ color:var(--muted);
+ margin-bottom:35px;
+ line-height:2;
+}
+
+.card{
+ padding:25px;
+ background:rgba(255,255,255,.06);
+ border-radius:24px;
+ border:1px solid rgba(255,255,255,.12);
+ box-shadow:var(--shadow);
+ margin-bottom:18px;
+}
+.text-with-icon {
+display: flex;
+align-items: center;
+gap: 10px;
+direction: rtl;
+justify-content: center;
+}
+.emoji-icon {
+width: 100px;
+height: 100px;
+object-fit: contain;
+vertical-align:-50px; 
+margin-right: -25px;
+
+}
+.header-logo{
+ height:125px;
+ position:absolute;
+ left:70%;
+ 
+ 
+ 
+ 
+}
+.header-title{
+ position:absolute;
+ left:15px;
+ top:5px;            
+ color:black;
+ font-size:25px;
+ font-weight: bolder;
+}
+.header-title1{
+ position:absolute;
+ left:33px;
+ top:50px;         
+ color:black;
+ font-size:28px;
+ font-weight:bolder;
+ letter-spacing: 8px;
+}
+.header-title2{
+ position:absolute;
+ left:46px;
+ top:95px;           
+ color:black;
+ font-size:13px;
+ font-weight:bolder;
+}
+
+
+
+
+
+
+footer{
+ text-align:center;
+ padding:40px 0;
+ color:var(--muted);
+ border-top:1px solid rgba(255,255,255,.15);
+ margin-top:50px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+ <button id="menuBtn" class="menu-btn">⋮</button>
+ <img src="images/domingo_1779771161668.webp" class="header-logo" alt="لوگو">
+ <p class="header-title">آکادمی سنگنوردی پیام</p>
+ <p class="header-title1">P   A  Y  A  M</p>
+ <p class="header-title2">ROCK CLIMBING ACADEMY</p>
+
+</header>
+
+<div id="sideMenu">
+  <h2 style="margin-bottom:25px;">منوی اصلی</h2>
+
+  <button class="side-link" onclick="openPage('pages/honors.html')">افتخارات آکادمی</button>
+  <button class="side-link" onclick="openPage('pages/coach.html')">مربیان</button>
+  <button class="side-link" onclick="openPage('pages/setter.html')">طراحان</button>
+  <button class="side-link" onclick="openPage('pages/moonboard.html')">دیواره مون‌بورد</button>
+  <button class="side-link" onclick="openPage('lead.html')">دیواره لید</button>
+  <button class="side-link" onclick="openPage('boulder.html')">دیواره بلدر</button>
+  <button class="side-link" onclick="openPage('boulder.html')">دیواره سرعت</button>
+  <button class="side-link" onclick="openPage('pages/time.html')">ساعت کاری</button>
+  <button class="side-link" onclick="openPage('pages/support.html')">ارتباط با ما</button>
+</div>
+
+<script>
+function openPage(page){
+  window.location.href = page;
+}
+</script>
+
+
+<section class="hero">
+
+ <video class="active" muted playsinline preload="auto">
+   <source src="video/Recording 2026-06-03 115305.mp4" type="video/mp4">
+ </video>
+
+ <video muted playsinline preload="auto">
+   <source src="video/ILIA-DynamicMoves-1.mp4" type="video/mp4">
+ </video>
+
+ <video class="active" muted playsinline preload="auto">
+   <source src="video/23D72065-69A1-476E-A69F-97CEE64264A4-1400-000000DB99ED5951.mp4" type="video/mp4">
+ </video>
+
+ <!-- <video muted playsinline preload="auto">
+   <source src="video/WIN_20240927_14_14_55_Pro.mp4" type="video/mp4">
+ </video> -->
+
+ <div class="hero-content">
+   <p class="hero-text">
+       تنها باشگاه دارای مون بورد در ایران
+       <img class="emoji-icon" src="images/download (1) (1).png" alt="">
+   </p>
+ </div>
+
+</section>
+
+<footer>
+ © تمامی حقوق برای آکادمی سنگنوردی پیام محفوظ است.
+</footer>
+
+
+<script>
+
+
+const menuBtn = document.getElementById("menuBtn");
+const sideMenu = document.getElementById("sideMenu");
+
+menuBtn.addEventListener("click", function(e){
+ e.stopPropagation();
+ sideMenu.classList.toggle("active");
+});
+
+document.addEventListener("click", function(e){
+ if(!e.target.closest("#sideMenu") && !e.target.closest("#menuBtn")){
+   sideMenu.classList.remove("active");
+ }
+});
+
+
+
+const videos = document.querySelectorAll(".hero video");
+let current = 0;
+
+function playVideo(i){
+ videos.forEach(v=>v.classList.remove("active"));
+ videos[i].classList.add("active");
+
+ videos[i].play().catch(()=>{});
+
+ videos[i].onended = ()=>{
+   current = (current + 1) % videos.length;
+   playVideo(current);
+ };
+}
+
+playVideo(0);
+
+
+const anims = document.querySelectorAll("[data-anim]");
+
+function checkAnimations(){
+ anims.forEach(el=>{
+   const rect = el.getBoundingClientRect();
+   if(rect.top < window.innerHeight - 100){
+     el.classList.add("show");
+   }
+ });
+}
+
+window.addEventListener("scroll", checkAnimations);
+checkAnimations();
+
+</script>
+
+</body>
+</html>

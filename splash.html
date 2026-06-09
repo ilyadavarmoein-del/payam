@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<title>Payam Climbing Academy</title>
+<link rel="icon" href="images/title1.jpg">
+
+<style>
+body{
+    margin:0;
+    background:#0f0f0f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:sans-serif;
+    overflow:hidden;
+}
+
+#splash{
+    text-align:center;
+    color:white;
+    animation: fadeOut 0.6s ease 1.6s forwards;
+}
+
+.logo{
+    width:140px;
+    animation: zoomIn 1s ease forwards;
+}
+
+.title{
+    margin-top:15px;
+    font-size:20px;
+    letter-spacing:2px;
+    opacity:0;
+    animation: fadeText 0.8s 0.6s forwards;
+}
+
+@keyframes zoomIn{
+    from{
+        transform:scale(0.5);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+@keyframes fadeText{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeOut{
+    to{
+        opacity:0;
+        transform:scale(1.2);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="splash">
+    <img src="images/title1.jpg
+    " class="logo">
+    <div class="title">Payam Climbing Academy</div>
+</div>
+
+<script>
+setTimeout(function(){
+    window.location.href="index.html";
+},2000);
+</script>
+
+</body>
+</html>

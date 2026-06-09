@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ارتباط با ما | آکادمی سنگنوردی پیام</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap');
+
+    :root{
+      --bg:#0b0f14;
+      --bg2:#121922;
+      --panel:#18212b;
+      --panel-2:#202b36;
+      --line:#2a3642;
+      --text:#edf2f7;
+      --muted:#a8b3c2;
+      --accent:#ffb703;
+      --accent-2:#fb8500;
+      --green:#57cc99;
+      --blue:#4ea8de;
+      --red:#ff5d73;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius:24px;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:'Vazirmatn', sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255,183,3,.07), transparent 18%),
+        radial-gradient(circle at 85% 10%, rgba(78,168,222,.07), transparent 18%),
+        radial-gradient(circle at 75% 80%, rgba(251,133,0,.06), transparent 18%),
+        linear-gradient(135deg, var(--bg) 0%, var(--bg2) 55%, #0d131a 100%);
+      min-height:100vh;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* Topographic lines */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.28;
+      background-image:url("data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1200'>\
+      <g fill='none' stroke='%23303a48' stroke-width='1.5'>\
+      <path d='M15 155c87-49 156-44 238 3s153 58 235 16 150-46 229-2 150 58 231 20 150-55 236-13 149 56 227 16'/>\
+      <path d='M-8 235c91-50 165-45 248 4s148 58 228 15 151-49 236-5 149 58 229 21 152-57 236-15 152 55 235 18'/>\
+      <path d='M11 318c83-45 153-39 234 7s148 56 231 19 154-50 241-5 145 57 225 22 151-52 235-13 153 54 236 16'/>\
+      <path d='M-21 406c102-50 174-40 258 9s151 58 235 15 153-54 238-7 151 58 232 20 152-56 238-14 153 55 240 14'/>\
+      <path d='M24 500c95-48 170-39 254 10s146 57 228 19 151-55 237-7 153 60 236 22 150-57 235-12 157 53 240 13'/>\
+      <path d='M-10 590c91-47 165-39 249 11s151 58 237 16 153-57 236-8 149 60 232 21 149-55 232-12 151 54 235 15'/>\
+      <path d='M20 680c89-44 161-37 243 13s151 55 235 14 157-54 242-8 149 60 231 22 150-58 236-13 155 54 239 14'/>\
+      <path d='M-14 770c100-45 175-36 260 15s149 56 232 13 152-58 238-8 151 62 238 21 149-58 235-12 156 53 239 15'/>\
+      <path d='M31 860c92-42 164-35 247 15s151 55 235 15 154-57 238-9 150 58 232 22 152-56 237-14 156 52 241 14'/>\
+      </g></svg>");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .page{
+      width:min(1200px, calc(100% - 32px));
+      margin:40px auto;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .hero-card,
+    .form-card{
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-card{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+        linear-gradient(135deg, #17202a, #111820 60%, #0d141b);
+      padding:42px;
+      min-height:680px;
+      isolation:isolate;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      inset:auto auto -80px -80px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,183,3,.2), transparent 70%);
+      z-index:-1;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--accent);
+      font-size:.9rem;
+      margin-bottom:20px;
+    }
+
+    .tag span.dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      /* background:var(--accent); */
+      background: #03ff07b3 !important;
+      box-shadow:0 0 12px #03ff07b3;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:clamp(2rem, 4vw, 4rem);
+      line-height:1.15;
+      font-weight:800;
+      letter-spacing:-0.5px;
+    }
+
+    .lead{
+      margin:0 0 28px;
+      color:var(--muted);
+      line-height:2;
+      font-size:1rem;
+      max-width:54ch;
+    }
+
+    .route-line{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.9;
+    }
+
+    .route-line svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+
+    .route-path{
+      fill:none;
+      stroke: rgba(3, 255, 7, 0.7);
+      stroke-width:3;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray:8 12;
+      filter:drop-shadow(0 0 8px rgba(255,183,3,.18));
+    }
+
+    .hold{
+      position:absolute;
+      width:68px;
+      height:54px;
+      border-radius:41% 59% 63% 37% / 38% 43% 57% 62%;
+      box-shadow:
+        inset -8px -10px 14px rgba(0,0,0,.18),
+        inset 8px 8px 12px rgba(255,255,255,.12),
+        0 10px 18px rgba(0,0,0,.25);
+      transform:rotate(var(--r, 0deg));
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .hold::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:8px;
+      height:8px;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      background:rgba(255,255,255,.9);
+      box-shadow:0 0 0 3px rgba(0,0,0,.13);
+    }
+
+    .hold.yellow{ background:linear-gradient(145deg, #ffd166, #f4a300); }
+    .hold.blue{ background:linear-gradient(145deg, #7cc6fe, #3587d8); }
+    .hold.green{ background:linear-gradient(145deg, #8ce99a, #3cb371); }
+    .hold.red{ background:linear-gradient(145deg, #ff8aa1, #ff4d6d); }
+
+    .hold.h1{ top:110px; right:70px; --r:-14deg; }
+    .hold.h2{ top:220px; right:210px; --r:20deg; }
+    .hold.h3{ top:310px; right:110px; --r:-8deg; }
+    .hold.h4{ top:420px; right:255px; --r:11deg; }
+    .hold.h5{ top:520px; right:125px; --r:-20deg; }
+    .hold.h6{ top:170px; left:75px; --r:12deg; }
+    .hold.h7{ top:355px; left:135px; --r:-18deg; }
+    .hold.h8{ top:530px; left:70px; --r:8deg; }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:22px;
+      position:relative;
+      z-index:2;
+    }
+
+    .info-box{
+      background:rgba(70, 70, 70, 0.742);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:16px 16px 18px;
+      transition:.25s ease;
+    }
+
+    .info-box:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,183,3,.35);
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+
+    .info-box .label{
+      font-size:.84rem;
+      color:var(--accent);
+      margin-bottom:8px;
+      display:block;
+    }
+
+    .info-box .value{
+      color:var(--text);
+      line-height:1.9;
+      font-size:.95rem;
+    }
+
+    .form-card{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.96));
+      color:#17212b;
+      padding:34px;
+      min-height:680px;
+    }
+
+    .form-card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      right:0;
+      width:100%;
+      height:8px;
+      background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .panel-title{
+      margin:8px 0 8px;
+      font-size:2rem;
+      font-weight:800;
+      color:#15202b;
+    }
+
+    .panel-desc{
+      margin:0 0 28px;
+      color:#5a6776;
+      line-height:1.9;
+      font-size:.97rem;
+    }
+
+    .form-group{
+      margin-bottom:16px;
+    }
+
+    .label{
+      display:block;
+      margin-bottom:8px;
+      font-size:.92rem;
+      font-weight:700;
+      color:#273444;
+    }
+
+    .input,
+    .textarea{
+      width:100%;
+      border:1px solid #dbe3ec;
+      background:#f7fafc;
+      padding:15px 16px;
+      border-radius:16px;
+      font-family:inherit;
+      font-size:.96rem;
+      transition:.25s ease;
+      color:#0f1720;
+      outline:none;
+    }
+
+    .input:focus,
+    .textarea:focus{
+      border-color:#ffb703;
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(255,183,3,.12);
+    }
+
+    .textarea{
+      min-height:150px;
+      resize:vertical;
+    }
+
+    .level-title{
+      display:block;
+      margin-bottom:12px;
+      font-size:.92rem;
+      font-weight:700;
+      color:#273444;
+    }
+
+    .level-picks{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .level-picks input{
+      display:none;
+    }
+
+    .level-label{
+      min-width:100px;
+      padding:12px 14px;
+      border-radius:999px;
+      font-size:.9rem;
+      font-weight:700;
+      cursor:pointer;
+      border:2px solid transparent;
+      transition:.25s ease;
+      text-align:center;
+      user-select:none;
+      color:#0f1720;
+      box-shadow:0 8px 18px rgba(0,0,0,.06);
+    }
+
+    .level-label.beginner{ background:#c7f9cc; }
+    .level-label.medium{ background:#bde0fe; }
+    .level-label.pro{ background:#ffd6a5; }
+    .level-label.coach{ background:#ffc2d1; }
+
+    .level-picks input:checked + .level-label{
+      transform:translateY(-4px) scale(1.04);
+      border-color:#17212b;
+      box-shadow:0 12px 24px rgba(0,0,0,.12);
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .submit-btn{
+      width:100%;
+      border:none;
+      padding:17px 22px;
+      margin-top:8px;
+      border-radius:18px;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#111827;
+      font-family:inherit;
+      font-size:1rem;
+      font-weight:800;
+      cursor:pointer;
+      transition:.25s ease;
+      box-shadow:0 16px 30px rgba(251,133,0,.22);
+    }
+
+    .submit-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 20px 34px rgba(251,133,0,.28);
+      filter:saturate(1.08);
+    }
+
+    .submit-btn:active{
+      transform:translateY(0);
+    }
+
+    .note{
+      margin-top:14px;
+      font-size:.86rem;
+      color:#64748b;
+      text-align:center;
+      line-height:1.8;
+    }
+
+    .socials{
+      margin-top:24px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .social{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--text);
+      text-decoration:none;
+      transition:.25s ease;
+      font-size:.92rem;
+    }
+
+    .social:hover{
+      transform:translateY(-3px);
+      border-color:rgba(255,183,3,.35);
+      color:var(--accent);
+    }
+
+    .footer-strip{
+      margin-top:26px;
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      line-height:1.9;
+      font-size:.92rem;
+    }
+
+    @media (max-width: 980px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .hero-card,
+      .form-card{
+        min-height:auto;
+      }
+
+      .hold.h6,.hold.h7,.hold.h8{
+        display:none;
+      }
+    }
+
+    @media (max-width: 640px){
+      .page{
+        width:min(100% - 20px, 100%);
+        margin:18px auto 26px;
+      }
+
+      .hero-card,
+      .form-card{
+        padding:22px;
+        border-radius:20px;
+      }
+
+      .info-grid,
+      .two-col{
+        grid-template-columns:1fr;
+      }
+
+      .level-picks{
+        gap:10px;
+      }
+
+      .level-label{
+        flex:1 1 calc(50% - 10px);
+        min-width:unset;
+      }
+
+      .hero-card{
+        min-height:620px;
+      }
+
+      .hold{
+        width:58px;
+        height:46px;
+      }
+
+      .hold.h1{ top:95px; right:35px; }
+      .hold.h2{ top:195px; right:155px; }
+      .hold.h3{ top:290px; right:70px; }
+      .hold.h4{ top:385px; right:190px; }
+      .hold.h5{ top:495px; right:90px; }
+    }
+    .tag,
+    h1,
+    .lead,
+    .info-grid,
+    .socials,
+    .footer-strip{
+      position: relative;
+      z-index: 3;
+    }
+
+  </style>
+</head>
+<body>
+
+  <main class="page">
+    <section class="hero">
+
+      <!-- Right/Intro side -->
+      <div class="hero-card">
+        <div class="tag">
+          <span style ="color: #106806;"  class="dot"></span>
+          آکادمی سنگنوردی پیام باز است
+        </div>
+
+        <h1>از اولین صعود<br>تا آخرین صعود،<br>کنار شما هستیم</h1>
+
+        <p style ="color: #9ec3ff;" style="font-weight:bolder" class="lead">
+          اگر برای ثبت‌نام کلاس‌ها، مشاوره تمرین، برنامه‌های صعود، تجهیزات یا همکاری با
+          آکادمی سنگنوردی پیام سوالی دارید، از همین‌جا برای ما پیام بفرستید.
+          این صفحه طوری طراحی شده که حس واقعی دیواره، مسیر و صعود را منتقل کند؛
+          نه یک فرم تماس تکراری و معمولی.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <span class="label">آدرس باشگاه</span>
+            <div class="value">تهران، مجموعه ورزشی پیام، سالن تخصصی سنگنوردی</div>
+          </div>
+
+          <div class="info-box">
+            <span class="label">تلفن تماس</span>
+            <div class="value" dir="ltr">021-88888888<br>0912-0000000</div>
+          </div>
+
+          <div class="info-box">
+            <span class="label">ساعات پاسخگویی</span>
+            <div class="value">شنبه تا پنجشنبه<br>۸ صبح تا ۱۰ شب</div>
+          </div>
+
+          <div class="info-box">
+            <span class="label">ایمیل</span>
+            <div class="value" dir="ltr">info@payamclimbacademy.com</div>
+          </div>
+        </div>
+
+        <div class="socials">
+          <a href="#" class="social">اینستاگرام</a>
+          <a href="#" class="social">واتساپ</a>
+          <a href="#" class="social">تلگرام</a>
+        </div>
+
+        <div class="footer-strip">
+          اگر برای شروع مردد هستید، فقط پیام بدهید. فرقی نمی‌کند مبتدی باشید
+          یا حرفه‌ای؛ ما مسیر مناسب شما را پیدا می‌کنیم.
+        </div>
+
+        <!-- Decorative route -->
+        <div class="route-line">
+          <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+            <path class="route-path" d="M760 80 C690 135, 630 160, 600 230 C570 300, 670 340, 620 420 C575 490, 450 500, 470 590 C490 675, 640 700, 560 810" />
+          </svg>
+        </div>
+
+        <!-- Climbing holds -->
+        <span class="hold yellow h1"></span>
+        <span class="hold blue h2"></span>
+        <span class="hold red h3"></span>
+        <span class="hold green h4"></span>
+        <span class="hold yellow h5"></span>
+        <span class="hold blue h6"></span>
+        <span class="hold red h7"></span>
+        <span class="hold green h8"></span>
+      </div>
+
+      <!-- Form side -->
+      <div class="form-card">
+        <h2 class="panel-title">هم‌طناب شو، پیام بفرست</h2>
+        <p class="panel-desc">
+          فرم زیر را پر کنید تا تیم آکادمی در اولین فرصت با شما تماس بگیرد.
+          می‌توانید برای ثبت‌نام، مشاوره، کلاس خصوصی، برنامه باشگاهی یا همکاری پیام بگذارید.
+        </p>
+
+        <form>
+          <div class="two-col">
+            <div class="form-group">
+              <label class="label" for="name">نام و نام خانوادگی</label>
+              <input class="input" type="text" id="name" placeholder="مثلاً: علی رضایی" />
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="phone">شماره تماس</label>
+              <input class="input" type="tel" id="phone" placeholder="مثلاً: 09123456789" />
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div class="form-group">
+              <label class="label" for="email">ایمیل</label>
+              <input class="input" type="email" id="email" placeholder="example@mail.com" />
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="subject">موضوع</label>
+              <input class="input" type="text" id="subject" placeholder="ثبت‌نام کلاس / مشاوره / همکاری" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <span class="level-title">سطح سنگنوردی شما</span>
+            <div class="level-picks">
+              <input type="radio" name="level" id="beginner" checked>
+              <label for="beginner" class="level-label beginner">مبتدی</label>
+
+              <input type="radio" name="level" id="medium">
+              <label for="medium" class="level-label medium">متوسط</label>
+
+              <input type="radio" name="level" id="pro">
+              <label for="pro" class="level-label pro">پیشرفته</label>
+
+              <input type="radio" name="level" id="coach">
+              <label for="coach" class="level-label coach">مربی / حرفه‌ای</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label" for="message">متن پیام</label>
+            <textarea class="textarea" id="message" placeholder="پیام شما برای آکادمی پیام..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">ارسال پیام به مسیر صعود</button>
+
+          <div class="note">
+            معمولاً پاسخ‌گویی در سریع‌ترین زمان انجام می‌شود.  
+            اگر موضوع شما فوری است، تماس تلفنی سریع‌تر خواهد بود.
+          </div>
+        </form>
+      </div>
+
+    </section>
+  </main>
+
+</body>
+</html>
