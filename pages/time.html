@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ساعت کاری</title>
+<title>ساعت کاری - روزهای زوج و فرد</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -54,17 +54,6 @@
     z-index: 0;
   }
 
-  /* deep gradient sweep */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 70% 10%, rgba(15,51,153,0.18) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 10% 80%, rgba(10,31,68,0.25) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
   .orb {
     position: fixed;
     border-radius: 50%;
@@ -84,12 +73,6 @@
     bottom: -80px; left: -80px;
     animation-delay: 3.5s;
   }
-  .orb-3 {
-    width: 250px; height: 250px;
-    background: radial-gradient(circle, rgba(15,51,153,0.15) 0%, transparent 70%);
-    top: 45%; left: 25%;
-    animation-delay: 6s;
-  }
 
   @keyframes floatOrb {
     0%,100% { transform: translate(0,0) scale(1); }
@@ -104,7 +87,6 @@
     max-width: 720px;
   }
 
-  /* ── HEADER ── */
   .header {
     text-align: center;
     margin-bottom: 2.5rem;
@@ -127,7 +109,6 @@
     color: var(--text);
     font-weight: 500;
     margin-bottom: 1.1rem;
-    letter-spacing: 0.06em;
   }
   .pulse-dot {
     width: 7px; height: 7px;
@@ -153,7 +134,6 @@
   }
   .header p { color: var(--muted); font-size: 0.92rem; font-weight: 300; }
 
-  /* ── LIVE CLOCK ── */
   .live-clock {
     background: linear-gradient(135deg, #060f22 0%, #040c1a 100%);
     border: 1px solid var(--border);
@@ -164,34 +144,24 @@
     align-items: center;
     justify-content: space-between;
     animation: slideUp 0.8s 0.2s cubic-bezier(0.16,1,0.3,1) both;
-    position: relative;
-    overflow: hidden;
-  }
-  .live-clock::before {
-    content:'';
-    position:absolute; inset:0;
-    background: linear-gradient(120deg, rgba(26,79,214,0.1) 0%, transparent 55%);
-    pointer-events:none;
   }
   @keyframes slideUp {
     from { opacity:0; transform:translateY(18px); }
     to   { opacity:1; transform:translateY(0); }
   }
   .clock-left { display:flex; flex-direction:column; gap:3px; }
-  .clock-label { font-size:0.72rem; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
-  .clock-time  { font-size:2rem; font-weight:700; color:var(--text2); letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
+  .clock-label { font-size:0.72rem; color:var(--muted); text-transform:uppercase; }
+  .clock-time  { font-size:2rem; font-weight:700; color:var(--text2); font-variant-numeric:tabular-nums; }
   .clock-date  { font-size:0.82rem; color:var(--muted); }
 
   .status-pill {
     display:flex; align-items:center; gap:8px;
     padding:10px 18px; border-radius:50px;
     font-size:0.84rem; font-weight:600;
-    transition: all 0.4s ease;
   }
   .status-pill.open   { background:rgba(0,229,160,0.1); border:1px solid rgba(0,229,160,0.3); color:var(--green); }
   .status-pill.closed { background:rgba(255,107,53,0.1); border:1px solid rgba(255,107,53,0.3); color:var(--accent); }
 
-  /* ── SESSION TABS ── */
   .tabs {
     display:flex; gap:0.6rem;
     margin-bottom:1.2rem;
@@ -207,197 +177,59 @@
     cursor:pointer;
     transition: all 0.3s ease;
     display:flex; align-items:center; justify-content:center; gap:8px;
-    position:relative; overflow:hidden;
   }
-  .tab-btn::before {
-    content:''; position:absolute; inset:0;
-    opacity:0; transition:opacity 0.3s;
-  }
-  .tab-btn:hover { transform:translateY(-2px); }
+  .tab-btn.tab-gents.active { background: linear-gradient(135deg, rgba(0,80,160,0.5) 0%, rgba(10,25,60,0.8) 100%); border-color: rgba(0,176,255,0.6); color: #7dd3fc; }
+  .tab-btn.tab-ladies.active { background: linear-gradient(135deg, rgba(100,10,130,0.5) 0%, rgba(30,5,50,0.8) 100%); border-color: rgba(224,64,251,0.6); color: #e879f9; }
 
-  .tab-btn.tab-gents { border-color: rgba(0,176,255,0.3); }
-  .tab-btn.tab-gents.active {
-    background: linear-gradient(135deg, rgba(0,80,160,0.5) 0%, rgba(10,25,60,0.8) 100%);
-    border-color: rgba(0,176,255,0.6);
-    color: #7dd3fc;
-    box-shadow: 0 0 20px rgba(0,176,255,0.15), inset 0 1px 0 rgba(0,176,255,0.2);
-  }
-
-  .tab-btn.tab-ladies { border-color: rgba(224,64,251,0.3); }
-  .tab-btn.tab-ladies.active {
-    background: linear-gradient(135deg, rgba(100,10,130,0.5) 0%, rgba(30,5,50,0.8) 100%);
-    border-color: rgba(224,64,251,0.6);
-    color: #e879f9;
-    box-shadow: 0 0 20px rgba(224,64,251,0.15), inset 0 1px 0 rgba(224,64,251,0.2);
-  }
-
-  .tab-icon { font-size:1.1rem; }
-
-  /* ── SECTION HEADER ── */
   .section-header {
-    display:flex; align-items:center; gap:10px;
-    margin-bottom:0.9rem;
+    display:flex; align-items:center; gap:10px; margin-bottom:0.9rem;
     animation: slideUp 0.6s 0.35s cubic-bezier(0.16,1,0.3,1) both;
   }
-  .section-line {
-    flex:1; height:1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-  }
-  .section-title {
-    font-size:0.75rem; font-weight:700;
-    letter-spacing:0.1em; text-transform:uppercase;
-    padding:4px 14px; border-radius:50px;
-  }
-  .section-title.gents {
-    color: #7dd3fc;
-    background: rgba(0,176,255,0.08);
-    border: 1px solid rgba(0,176,255,0.2);
-  }
-  .section-title.ladies {
-    color: #e879f9;
-    background: rgba(224,64,251,0.08);
-    border: 1px solid rgba(224,64,251,0.2);
-  }
+  .section-line { flex:1; height:1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+  .section-title { font-size:0.75rem; font-weight:700; padding:4px 14px; border-radius:50px; }
+  .section-title.gents { color: #7dd3fc; background: rgba(0,176,255,0.08); border: 1px solid rgba(0,176,255,0.2); }
+  .section-title.ladies { color: #e879f9; background: rgba(224,64,251,0.08); border: 1px solid rgba(224,64,251,0.2); }
 
-  /* ── SCHEDULE ── */
-  .schedule {
-    display:flex; flex-direction:column; gap:0.55rem;
-  }
   .schedule-panel { display:none; }
   .schedule-panel.active { display:flex; flex-direction:column; gap:0.55rem; }
 
   .day-row {
-    border-radius:14px;
-    padding:0.95rem 1.4rem;
+    border-radius:14px; padding:0.95rem 1.4rem;
     display:flex; align-items:center; justify-content:space-between;
     transition: all 0.3s ease;
-    cursor:default; position:relative; overflow:hidden;
     animation: rowIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
   }
+  .gents-panel .day-row { background: linear-gradient(135deg, #060f22 0%, #040c1a 100%); border: 1px solid var(--border); }
+  .ladies-panel .day-row { background: linear-gradient(135deg, #0a0614 0%, #070310 100%); border: 1px solid #120828; }
 
-  /* Gents row */
-  .gents-panel .day-row {
-    background: linear-gradient(135deg, #060f22 0%, #040c1a 100%);
-    border: 1px solid var(--border);
-  }
-  .gents-panel .day-row::before {
-    content:''; position:absolute; inset:0;
-    background: linear-gradient(90deg, rgba(0,100,200,0.1) 0%, transparent 55%);
-    opacity:0; transition:opacity 0.3s;
-  }
-  .gents-panel .day-row:hover { border-color:rgba(0,176,255,0.4); transform:translateX(-4px); }
-  .gents-panel .day-row:hover::before { opacity:1; }
-  .gents-panel .day-row.today {
-    border-color:rgba(0,176,255,0.55);
-    background: linear-gradient(135deg, rgba(0,60,140,0.2) 0%, #040c1a 60%);
-  }
-  .gents-panel .day-row.today::after {
-    content:''; position:absolute; right:0; top:0; bottom:0; width:3px;
-    background: linear-gradient(180deg, #00b0ff 0%, #0081cb 100%);
-    border-radius:0 14px 14px 0;
-  }
+  .day-row.today { border-width: 1.5px; }
+  .gents-panel .day-row.today { border-color:rgba(0,176,255,0.55); background: linear-gradient(135deg, rgba(0,60,140,0.2) 0%, #040c1a 60%); }
+  .ladies-panel .day-row.today { border-color:rgba(224,64,251,0.55); background: linear-gradient(135deg, rgba(100,0,140,0.18) 0%, #070310 60%); }
 
-  /* Ladies row */
-  .ladies-panel .day-row {
-    background: linear-gradient(135deg, #0a0614 0%, #070310 100%);
-    border: 1px solid #120828;
-  }
-  .ladies-panel .day-row::before {
-    content:''; position:absolute; inset:0;
-    background: linear-gradient(90deg, rgba(150,0,200,0.1) 0%, transparent 55%);
-    opacity:0; transition:opacity 0.3s;
-  }
-  .ladies-panel .day-row:hover { border-color:rgba(224,64,251,0.4); transform:translateX(-4px); }
-  .ladies-panel .day-row:hover::before { opacity:1; }
-  .ladies-panel .day-row.today {
-    border-color:rgba(224,64,251,0.55);
-    background: linear-gradient(135deg, rgba(100,0,140,0.18) 0%, #070310 60%);
-  }
-  .ladies-panel .day-row.today::after {
-    content:''; position:absolute; right:0; top:0; bottom:0; width:3px;
-    background: linear-gradient(180deg, #e040fb 0%, #aa00ff 100%);
-    border-radius:0 14px 14px 0;
-  }
-
-  @keyframes rowIn {
-    from { opacity:0; transform:translateX(18px); }
-    to   { opacity:1; transform:translateX(0); }
-  }
-  .day-row:nth-child(1){animation-delay:0.05s}
-  .day-row:nth-child(2){animation-delay:0.12s}
-  .day-row:nth-child(3){animation-delay:0.19s}
-  .day-row:nth-child(4){animation-delay:0.26s}
-  .day-row:nth-child(5){animation-delay:0.33s}
-  .day-row:nth-child(6){animation-delay:0.40s}
-  .day-row:nth-child(7){animation-delay:0.47s}
+  @keyframes rowIn { from { opacity:0; transform:translateX(18px); } to { opacity:1; transform:translateX(0); } }
 
   .day-info { display:flex; align-items:center; gap:13px; }
-
-  .day-icon {
-    width:36px; height:36px; border-radius:10px;
-    background: var(--border);
-    display:flex; align-items:center; justify-content:center;
-    font-size:0.95rem; flex-shrink:0; transition:all 0.3s;
-  }
-  .gents-panel  .day-row.today .day-icon { background:rgba(0,176,255,0.18); animation:iconPop 2s ease-in-out infinite; }
-  .ladies-panel .day-row.today .day-icon { background:rgba(224,64,251,0.18); animation:iconPop 2s ease-in-out infinite; }
-  @keyframes iconPop {
-    0%,100%{transform:scale(1)} 50%{transform:scale(1.08)}
-  }
-
-  .day-texts { display:flex; flex-direction:column; gap:2px; }
-  .day-name   { font-size:0.92rem; font-weight:600; color:var(--text); }
-  .gents-panel  .day-row.today .day-name { color:#7dd3fc; }
-  .ladies-panel .day-row.today .day-name { color:#e879f9; }
-
-  .today-tag {
-    font-size:0.62rem; font-weight:700; letter-spacing:0.06em;
-    text-transform:uppercase; padding:2px 8px; border-radius:50px;
-    display:inline-block; margin-top:2px;
-  }
-  .gents-panel  .today-tag { color:#7dd3fc; background:rgba(0,176,255,0.15); }
+  .day-icon { width:36px; height:36px; border-radius:10px; background: var(--border); display:flex; align-items:center; justify-content:center; font-size:0.95rem; }
+  .day-name { font-size:0.92rem; font-weight:600; color:var(--text); }
+  .today-tag { font-size:0.62rem; font-weight:700; padding:2px 8px; border-radius:50px; margin-top:2px; display:inline-block; }
+  .gents-panel .today-tag { color:#7dd3fc; background:rgba(0,176,255,0.15); }
   .ladies-panel .today-tag { color:#e879f9; background:rgba(224,64,251,0.15); }
 
   .time-range { display:flex; align-items:center; gap:7px; font-size:0.87rem; font-weight:500; }
   .time-text  { color:var(--text2); font-variant-numeric:tabular-nums; }
-  .time-dot   { width:5px; height:5px; border-radius:50%; background:var(--muted); flex-shrink:0; }
+  .time-dot   { width:5px; height:5px; border-radius:50%; background:var(--muted); }
   .closed-text{ font-size:0.82rem; font-weight:500; color:var(--muted); }
 
-  /* ── PROGRESS BAR ── */
-  .progress-bar-wrap {
-    border-radius:14px; padding:1.1rem 1.4rem; margin-top:1.4rem;
-    animation: slideUp 0.8s 0.9s cubic-bezier(0.16,1,0.3,1) both;
-  }
-  .progress-bar-wrap.gents-progress {
-    background: linear-gradient(135deg, #060f22 0%, #040c1a 100%);
-    border:1px solid rgba(0,176,255,0.2);
-  }
-  .progress-bar-wrap.ladies-progress {
-    background: linear-gradient(135deg, #0a0614 0%, #070310 100%);
-    border:1px solid rgba(224,64,251,0.2);
-  }
-  .progress-bar-label { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; }
-  .progress-title { font-size:0.74rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; font-weight:500; }
-  .progress-pct   { font-size:0.82rem; font-weight:700; }
-  .gents-progress  .progress-pct { color:#7dd3fc; }
-  .ladies-progress .progress-pct { color:#e879f9; }
-  .progress-track { height:5px; background:var(--border); border-radius:99px; overflow:hidden; }
-  .progress-fill  { height:100%; border-radius:99px; transition:width 1.5s cubic-bezier(0.16,1,0.3,1); width:0%; }
-  .gents-progress  .progress-fill { background:linear-gradient(90deg,#0081cb,#00b0ff); box-shadow:0 0 10px rgba(0,176,255,0.5); }
-  .ladies-progress .progress-fill { background:linear-gradient(90deg,#aa00ff,#e040fb); box-shadow:0 0 10px rgba(224,64,251,0.5); }
-
-  /* ── FOOTER ── */
-  .footer-note {
-    text-align:center; margin-top:1.5rem;
-    font-size:0.76rem; color:var(--muted);
-    animation: slideUp 0.8s 1s cubic-bezier(0.16,1,0.3,1) both;
-  }
-  .footer-note span { color:var(--accent); font-weight:500; }
+  .progress-bar-wrap { border-radius:14px; padding:1.1rem 1.4rem; margin-top:1.4rem; animation: slideUp 0.8s 0.5s both; }
+  .progress-bar-wrap.gents-progress { background: #060f22; border:1px solid rgba(0,176,255,0.2); }
+  .progress-bar-wrap.ladies-progress { background: #0a0614; border:1px solid rgba(224,64,251,0.2); }
+  .progress-track { height:5px; background:var(--border); border-radius:99px; overflow:hidden; margin-top:8px; }
+  .progress-fill  { height:100%; transition:width 1s; width:0%; }
+  .gents-progress .progress-fill { background:#00b0ff; box-shadow:0 0 10px rgba(0,176,255,0.5); }
+  .ladies-progress .progress-fill { background:#e040fb; box-shadow:0 0 10px rgba(224,64,251,0.5); }
 
   @media(max-width:480px){
     .live-clock{flex-direction:column;gap:1rem;text-align:center;}
-    .clock-time{font-size:1.7rem;}
-    .day-row{padding:0.8rem 0.9rem;}
     .tabs{flex-direction:column;}
   }
 </style>
@@ -406,24 +238,17 @@
 
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
 
 <div class="container">
-
-  <!-- Header -->
   <div class="header">
-    <div class="header-badge">
-      <span class="pulse-dot"></span>
-      اطلاعات مجموعه
-    </div>
-    <h1>ساعات کاری ما</h1>
-    <p>در این ساعت‌ها آماده‌ی پاسخگویی هستیم</p>
+    <div class="header-badge"><span class="pulse-dot"></span> وضعیت کنونی مجموعه</div>
+    <h1>برنامه زمان‌بندی</h1>
+    <p>آقایان (روزهای زوج) | بانوان (روزهای فرد)</p>
   </div>
 
-  <!-- Live Clock -->
   <div class="live-clock">
     <div class="clock-left">
-      <span class="clock-label">زمان فعلی</span>
+      <span class="clock-label">زمان و تاریخ امروز</span>
       <span class="clock-time" id="clock">--:--:--</span>
       <span class="clock-date" id="date-display">---</span>
     </div>
@@ -433,79 +258,60 @@
     </div>
   </div>
 
-  <!-- Tabs -->
   <div class="tabs">
-    <button class="tab-btn tab-gents active" onclick="switchTab('gents')">
-      <span class="tab-icon">🏋️</span> سانس آقایان
-    </button>
-    <button class="tab-btn tab-ladies" onclick="switchTab('ladies')">
-      <span class="tab-icon">💃</span> سانس بانوان
-    </button>
+    <button class="tab-btn tab-gents active" onclick="switchTab('gents')">👨 سانس آقایان (زوج)</button>
+    <button class="tab-btn tab-ladies" onclick="switchTab('ladies')">👩 سانس بانوان (فرد)</button>
   </div>
 
-  <!-- Gents Panel -->
+  <!-- Gents Panel (Even Days) -->
   <div class="schedule-panel gents-panel active" id="gents-panel">
     <div class="section-header">
       <div class="section-line"></div>
-      <span class="section-title gents">آقایان</span>
+      <span class="section-title gents">آقایان - روزهای زوج</span>
       <div class="section-line"></div>
     </div>
     <div class="schedule">
-      <div class="day-row" data-day="6" data-open="06:00" data-close="14:00">
+      <div class="day-row" data-day="6" data-open="06:00" data-close="22:00">
         <div class="day-info">
-          <div class="day-icon">☀️</div>
+          <div class="day-icon">🔹</div>
           <div class="day-texts"><span class="day-name">شنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۰۶:۰۰</span>
-          <div class="time-dot"></div>
-          <span class="time-text">۱۴:۰۰</span>
-        </div>
+        <div class="time-range"><span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۲۲:۰۰</span></div>
       </div>
-      <div class="day-row" data-day="0" data-open="06:00" data-close="14:00">
+      <div class="day-row" data-day="0" data-open="" data-close="">
         <div class="day-info">
-          <div class="day-icon">🌿</div>
+          <div class="day-icon">🔸</div>
           <div class="day-texts"><span class="day-name">یکشنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۱۴:۰۰</span>
-        </div>
+        <div class="closed-text">مخصوص بانوان</div>
       </div>
-      <div class="day-row" data-day="1" data-open="06:00" data-close="14:00">
+      <div class="day-row" data-day="1" data-open="06:00" data-close="22:00">
         <div class="day-info">
-          <div class="day-icon">💼</div>
+          <div class="day-icon">🔹</div>
           <div class="day-texts"><span class="day-name">دوشنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۱۴:۰۰</span>
-        </div>
+        <div class="time-range"><span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۲۲:۰۰</span></div>
       </div>
-      <div class="day-row" data-day="2" data-open="06:00" data-close="14:00">
+      <div class="day-row" data-day="2" data-open="" data-close="">
         <div class="day-info">
-          <div class="day-icon">⚡</div>
+          <div class="day-icon">🔸</div>
           <div class="day-texts"><span class="day-name">سه‌شنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۱۴:۰۰</span>
-        </div>
+        <div class="closed-text">مخصوص بانوان</div>
       </div>
-      <div class="day-row" data-day="3" data-open="06:00" data-close="14:00">
+      <div class="day-row" data-day="3" data-open="06:00" data-close="22:00">
         <div class="day-info">
-          <div class="day-icon">🎯</div>
+          <div class="day-icon">🔹</div>
           <div class="day-texts"><span class="day-name">چهارشنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۱۴:۰۰</span>
-        </div>
+        <div class="time-range"><span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۲۲:۰۰</span></div>
       </div>
-      <div class="day-row" data-day="4" data-open="06:00" data-close="12:00">
+      <div class="day-row" data-day="4" data-open="" data-close="">
         <div class="day-info">
-          <div class="day-icon">🕐</div>
+          <div class="day-icon">🔸</div>
           <div class="day-texts"><span class="day-name">پنج‌شنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۱۲:۰۰</span>
-        </div>
+        <div class="closed-text">مخصوص بانوان</div>
       </div>
       <div class="day-row" data-day="5" data-open="" data-close="">
         <div class="day-info">
@@ -516,61 +322,63 @@
       </div>
     </div>
     <div class="progress-bar-wrap gents-progress" id="gents-progress" style="display:none;">
-      <div class="progress-bar-label">
-        <span class="progress-title">پیشرفت سانس آقایان امروز</span>
-        <span class="progress-pct" id="gents-pct">۰٪</span>
+      <div style="display:flex; justify-content:space-between; font-size:0.8rem;">
+        <span>زمان سپری شده از سانس امروز</span>
+        <span id="gents-pct">۰٪</span>
       </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="gents-fill"></div>
-      </div>
+      <div class="progress-track"><div class="progress-fill" id="gents-fill"></div></div>
     </div>
   </div>
 
-  <!-- Ladies Panel -->
+  <!-- Ladies Panel (Odd Days) -->
   <div class="schedule-panel ladies-panel" id="ladies-panel">
     <div class="section-header">
       <div class="section-line"></div>
-      <span class="section-title ladies">بانوان</span>
+      <span class="section-title ladies">بانوان - روزهای فرد</span>
       <div class="section-line"></div>
     </div>
     <div class="schedule">
-
-      </div>
-      <div class="day-row" data-day="0" data-open="14:00" data-close="21:00">
+      <div class="day-row" data-day="6" data-open="" data-close="">
         <div class="day-info">
-          <div class="day-icon">🌿</div>
+          <div class="day-icon">🔹</div>
+          <div class="day-texts"><span class="day-name">شنبه</span></div>
+        </div>
+        <div class="closed-text">مخصوص آقایان</div>
+      </div>
+      <div class="day-row" data-day="0" data-open="06:00" data-close="22:00">
+        <div class="day-info">
+          <div class="day-icon">🔸</div>
           <div class="day-texts"><span class="day-name">یکشنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۱۴:۰۰</span><div class="time-dot"></div><span class="time-text">۲۱:۰۰</span>
-        </div>
+        <div class="time-range"><span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۲۲:۰۰</span></div>
       </div>
-      <div class="day-row" data-day="1" data-open="14:00" data-close="21:00">
-                <div class="day-info">
-          <div class="day-icon">🌸</div>
+      <div class="day-row" data-day="1" data-open="" data-close="">
+        <div class="day-info">
+          <div class="day-icon">🔹</div>
+          <div class="day-texts"><span class="day-name">دوشنبه</span></div>
+        </div>
+        <div class="closed-text">مخصوص آقایان</div>
+      </div>
+      <div class="day-row" data-day="2" data-open="06:00" data-close="22:00">
+        <div class="day-info">
+          <div class="day-icon">🔸</div>
           <div class="day-texts"><span class="day-name">سه‌شنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۱۴:۰۰</span><div class="time-dot"></div><span class="time-text">۲۱:۰۰</span>
-        </div>
+        <div class="time-range"><span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۲۲:۰۰</span></div>
       </div>
-      <div class="day-row" data-day="3" data-open="14:00" data-close="21:00">
+      <div class="day-row" data-day="3" data-open="" data-close="">
         <div class="day-info">
-          <div class="day-icon">✨</div>
+          <div class="day-icon">🔹</div>
           <div class="day-texts"><span class="day-name">چهارشنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۱۴:۰۰</span><div class="time-dot"></div><span class="time-text">۲۱:۰۰</span>
-        </div>
+        <div class="closed-text">مخصوص آقایان</div>
       </div>
-      <div class="day-row" data-day="4" data-open="14:00" data-close="19:00">
+      <div class="day-row" data-day="4" data-open="06:00" data-close="20:00">
         <div class="day-info">
-          <div class="day-icon">🕐</div>
+          <div class="day-icon">🔸</div>
           <div class="day-texts"><span class="day-name">پنج‌شنبه</span></div>
         </div>
-        <div class="time-range">
-          <span class="time-text">۱۴:۰۰</span><div class="time-dot"></div><span class="time-text">۱۹:۰۰</span>
-        </div>
+        <div class="time-range"><span class="time-text">۰۶:۰۰</span><div class="time-dot"></div><span class="time-text">۲۰:۰۰</span></div>
       </div>
       <div class="day-row" data-day="5" data-open="" data-close="">
         <div class="day-info">
@@ -581,13 +389,11 @@
       </div>
     </div>
     <div class="progress-bar-wrap ladies-progress" id="ladies-progress" style="display:none;">
-      <div class="progress-bar-label">
-        <span class="progress-title">پیشرفت سانس بانوان امروز</span>
-        <span class="progress-pct" id="ladies-pct">۰٪</span>
+      <div style="display:flex; justify-content:space-between; font-size:0.8rem;">
+        <span>زمان سپری شده از سانس امروز</span>
+        <span id="ladies-pct">۰٪</span>
       </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="ladies-fill"></div>
-      </div>
+      <div class="progress-track"><div class="progress-fill" id="ladies-fill"></div></div>
     </div>
   </div>
 </div>
@@ -606,9 +412,6 @@
     document.getElementById('ladies-panel').classList.toggle('active', tab === 'ladies');
     document.querySelector('.tab-gents').classList.toggle('active', tab === 'gents');
     document.querySelector('.tab-ladies').classList.toggle('active', tab === 'ladies');
-    // re-trigger row animations
-    const rows = document.querySelectorAll('#'+tab+'-panel .day-row');
-    rows.forEach(r => { r.style.animation='none'; r.offsetHeight; r.style.animation=''; });
     update();
   }
 
@@ -618,7 +421,7 @@
     rows.forEach(r => {
       if(parseInt(r.dataset.day)===day){ open=r.dataset.open; close=r.dataset.close; }
     });
-    if(!open) return {isOpen:false,pct:0};
+    if(!open || open==="") return {isOpen:false, pct:0};
     const [oh,om]=open.split(':').map(Number);
     const [ch,cm]=close.split(':').map(Number);
     const now=h*60+m, op=oh*60+om, cl=ch*60+cm;
@@ -629,51 +432,51 @@
   function highlightToday(panelId, day) {
     document.querySelectorAll('#'+panelId+' .day-row').forEach(r => {
       r.classList.remove('today');
-      const t=r.querySelector('.today-tag'); if(t) t.remove();
+      const oldTag = r.querySelector('.today-tag');
+      if(oldTag) oldTag.remove();
       if(parseInt(r.dataset.day)===day){
         r.classList.add('today');
         const dt=r.querySelector('.day-texts');
-        if(!dt.querySelector('.today-tag')){
-          const tg=document.createElement('span');
-          tg.className='today-tag'; tg.textContent='امروز';
-          dt.appendChild(tg);
-        }
+        const tg=document.createElement('span');
+        tg.className='today-tag'; tg.textContent='امروز';
+        dt.appendChild(tg);
       }
     });
   }
 
   function update() {
     const now=new Date(), h=now.getHours(), m=now.getMinutes(), s=now.getSeconds(), day=now.getDay();
-
     document.getElementById('clock').textContent=toPersian(pad(h))+':'+toPersian(pad(m))+':'+toPersian(pad(s));
     document.getElementById('date-display').textContent=dayNames[day];
 
     highlightToday('gents-panel',day);
     highlightToday('ladies-panel',day);
 
-    // determine status from active tab
-    const panel = activeTab+'-panel';
-    const {isOpen,pct} = getStatus(panel,day,h,m);
+    const {isOpen,pct} = getStatus(activeTab+'-panel',day,h,m);
     const pill=document.getElementById('status-pill');
     pill.className='status-pill '+(isOpen?'open':'closed');
     document.getElementById('status-icon').textContent=isOpen?'✅':'🔒';
-    document.getElementById('status-text').textContent=isOpen?'باز هستیم':'بسته هستیم';
+    document.getElementById('status-text').textContent=isOpen?'در حال حاضر باز هستیم':'در حال حاضر بسته هستیم';
 
-    // gents progress
-    const gS=getStatus('gents-panel',day,h,m);
-    const gp=document.getElementById('gents-progress');
-    if(gS.isOpen){ gp.style.display='block'; document.getElementById('gents-fill').style.width=gS.pct+'%'; document.getElementById('gents-pct').textContent=toPersian(gS.pct)+'٪'; }
-    else { gp.style.display='none'; }
+    // Progress logic
+    const gS = getStatus('gents-panel',day,h,m);
+    const lS = getStatus('ladies-panel',day,h,m);
+    
+    document.getElementById('gents-progress').style.display = gS.isOpen ? 'block' : 'none';
+    if(gS.isOpen) {
+      document.getElementById('gents-fill').style.width = gS.pct+'%';
+      document.getElementById('gents-pct').textContent = toPersian(gS.pct)+'٪';
+    }
 
-    // ladies progress
-    const lS=getStatus('ladies-panel',day,h,m);
-    const lp=document.getElementById('ladies-progress');
-    if(lS.isOpen){ lp.style.display='block'; document.getElementById('ladies-fill').style.width=lS.pct+'%'; document.getElementById('ladies-pct').textContent=toPersian(lS.pct)+'٪'; }
-    else { lp.style.display='none'; }
+    document.getElementById('ladies-progress').style.display = lS.isOpen ? 'block' : 'none';
+    if(lS.isOpen) {
+      document.getElementById('ladies-fill').style.width = lS.pct+'%';
+      document.getElementById('ladies-pct').textContent = toPersian(lS.pct)+'٪';
+    }
   }
 
-  update();
   setInterval(update,1000);
+  update();
 </script>
 </body>
 </html>
