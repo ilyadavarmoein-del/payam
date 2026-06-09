@@ -510,6 +510,11 @@
       position: relative;
       z-index: 3;
     }
+    .phone-box {
+      transform: translateX(-130px);
+    }
+
+
 
   </style>
 </head>
@@ -535,20 +540,26 @@
         </p>
 
         <div class="info-grid">
+          <!-- ۱. باکس آدرس باشگاه (بالا) -->
           <div class="info-box">
             <span class="label">آدرس باشگاه</span>
             <div class="value">تهران، مجموعه ورزشی پیام، سالن تخصصی سنگنوردی</div>
           </div>
-
-          <div class="info-box">
-            <span class="label">تلفن تماس</span>
-            <div class="value" dir="ltr">021-42340000<br>داخلی 128</div>
-          </div>
-
+          
+          <!-- ۳. باکس ساعات پاسخگویی (پایین) -->
           <div class="info-box">
             <span class="label">ساعات پاسخگویی</span>
-            <div class="value">شنبه تا پنجشنبه<br>۸ صبح تا ۱۰ شب</div>
+            <div class="value" >شنبه تا پنجشنبه<br>۸ صبح تا ۱۰ شب</div>
           </div>
+          
+          <!-- ۲. باکس تلفن تماس (که حالا به وسط منتقل شده است) -->
+          <div class="info-box phone-box">
+            <span class="label">تلفن تماس</span>
+            <div class="value" ">021-42340000<br>داخلی 128</div>
+          </div>
+
+          
+
 
         </div>
 
