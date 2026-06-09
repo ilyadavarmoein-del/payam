@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoonBoard 2024 | بخش تخصصی باشگاه</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
+        
+        body {
+            background-color: #09090b; /* Zinc 950 */
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
 
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(234, 179, 8, 0.5);
+        }
+
+        /* استایل برای تصویر اصلی */
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        
+        <!-- Hero Section -->
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            
+            <!-- Left Side: Content -->
+            <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                <div class="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-widest text-yellow-500 uppercase border border-yellow-500/30 rounded-full bg-yellow-500/10">
+                    Technological Standard 2024
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter">
+                    MOON <span class="text-yellow-500 neon-text">BOARD</span>
+                </h1>
+                <p class="text-zinc-400 text-lg mb-8 leading-relaxed max-w-xl">
+                    به دنیای هوشمند سنگنوردی خوش آمدید. نسخه <span class="text-white font-bold">2024</span> مون‌بورد با زاویه تندتر، گیره‌های جدید سری Wood و سیستم LED یکپارچه، مرزهای توانایی شما را جابجا می‌کند. این فقط یک دیواره نیست؛ یک شبکه جهانی از مسیرهای حرفه‌ای است.
+                </p>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 gap-4 mb-10">
+                    <div class="glass-card p-4 rounded-2xl">
+                        <span class="block text-2xl font-bold text-white">۴۰ درجه</span>
+                        <span class="text-zinc-500 text-sm">زاویه استاندارد</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-2xl">
+                        <span class="block text-2xl font-bold text-white">۱۰۰K+</span>
+                        <span class="text-zinc-500 text-sm">مسیر در اپلیکیشن</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Side: Image Display -->
+            <div class="w-full lg:w-1/2 h-[400px] lg:h-[600px] order-1 lg:order-2 relative">
+                <!-- دایره نوری پشت تصویر -->
+                <div class="absolute inset-0 bg-yellow-500/20 blur-[120px] rounded-full"></div>
+                
+                <!-- جایگزین مدل سه بعدی با عکس -->
+                <img 
+                    style="color: rgba(0, 0, 0, 0.5);"
+                    src="../images/moon.png" 
+                    alt="MoonBoard 2024 View" 
+                    class="hero-image relative z-10"
+                >
+
+                <!-- لیبل روی عکس -->
+                <div class="absolute bottom-6 right-6 z-20">
+                    <div class="bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 text-xs text-white/90 uppercase tracking-widest">
+                        New 2024 Setup
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tech Specs Footer -->
+        <div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-zinc-800 pt-12">
+            <div>
+                <h3 class="text-yellow-500 font-bold mb-2 uppercase tracking-wider">01. اتصال هوشمند</h3>
+                <p class="text-zinc-500 text-sm">اتصال فوری از طریق بلوتوث به اپلیکیشن Moon Climbing جهت انتخاب و نمایش مسیرها با LED.</p>
+            </div>
+            <div>
+                <h3 class="text-yellow-500 font-bold mb-2 uppercase tracking-wider">02. گیره‌های جدید</h3>
+                <p class="text-zinc-500 text-sm">شامل پکیج کامل گیره‌های ۲۰۲۴ که توسط بن مون برای به چالش کشیدن استقامت طراحی شده‌اند.</p>
+            </div>
+            <div>
+                <h3 class="text-yellow-500 font-bold mb-2 uppercase tracking-wider">03. دیتابیس جهانی</h3>
+                <p class="text-zinc-500 text-sm">دسترسی به هزاران مسئله (Problem) از سنگنوردان سراسر جهان در سطوح مختلف.</p>
+            </div>
+        </div>
+
+    </main>
+    </div>
+
+</body>
+</html>
